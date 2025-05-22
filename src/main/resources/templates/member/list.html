@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 목록</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h2>회원 목록</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>아이디</th>
+                        <th>비밀번호</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>이메일</th>
+                        <th>주소</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr th:if="${#lists.isEmpty(list)}">
+                        <td colspan="7">등록 된 회원이 없습니다</td>
+                    </tr>
+                    
+                    <tr th:each="item : ${list}">
+                        <td th:text="${item.memberId}"></td>
+                        <td th:text="${item.passwd}"></td>
+                        <td th:text="${item.name}"></td>
+                        <td th:text="${item.phone}"></td>
+                        <td th:text="${item.email}"></td>
+                        <td th:text="${item.address}"></td>
+                        <td>
+                            <a th:href="@{update/{id}(id=${item.memberId})}">변경</a>
+                            <a th:href="@{delete/{id}(id=${item.memberId})}">삭제</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a th:href="@{add}">등록</a>
+                <a th:href="@{..}">이전</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

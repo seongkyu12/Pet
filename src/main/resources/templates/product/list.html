@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>제품 목록 </h3>
+		</div>
+	</div>
+	
+	<div>
+		<div th:if="${#lists.isEmpty(list)}">
+			<p>검색된 제품이 없습니다</p>
+		</div>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>상품명</th>
+					<th>체중</th>
+					<th>설명</th>
+					<th>가격</th>
+					<th>추가금액</th>
+					<th>크기</th>
+					<th>작업</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="item : ${list}">
+						<td><strong th:text="${item.name}"></strong></td>
+						<td><strong th:text="${item.weight}"></strong></td>
+						<td><strong th:text="${item.info}"></strong></td>
+						<td><strong th:text="${item.price}"></strong></td>
+						<td><strong th:text="${item.additionalPrice}"></strong></td>
+						<td><strong th:text="${item.dogSize}"></strong></td>
+						
+						<td>
+							<a th:href="@{'/product/update/' + ${item.productId}}">변경</a>
+                     		<a th:href="@{'/product/delete/' + ${item.productId}}">삭제</a>
+						</td>
+				</tr>
+              </tbody>
+           </table>
+	</div>
+	
+	<div>
+		<a th:href="@{add}">등록</a>
+		<a th:href="@{/}">이전</a>
+	</div>
+	
+</body>
+</html>

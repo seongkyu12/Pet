@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <h3>제품정보 수정</h3>
+        
+        <form method="post">
+            <div>
+                <label>제품명:</label>
+                <input type="text" name="name" th:value="${item.name}">
+            </div>
+            
+            <div>
+                <label>몸무게:</label>
+                <input type="text" name="weight" th:value="${item.weight}">
+            </div>
+            
+            <div>
+                <label>설명:</label>
+                <textarea name="info" th:text="${item.info}"></textarea>
+            </div>
+            
+            <div>
+                <label>가격:</label>
+                <input type="number" name="price" th:value="${item.price}">
+            </div>
+            
+            <div>
+                <label>추가금액:</label>
+                <input type="number" name="additionalPrice" th:value="${item.additionalPrice}">
+            </div>
+            
+            <div>
+                <label>크기:</label>
+                <input type="text" name="dogSize" th:value="${item.dogSize}">
+            </div>
+            
+            <div>
+                <button type="submit">변경</button>
+                <a th:href="@{/product/list}"><button type="button">취소</button></a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
